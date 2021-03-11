@@ -1,0 +1,24 @@
+apply plugin: 'scala'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'com.workday.warp:warp-core_2.12:5.0.1'
+	testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
+	testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.7.0") {
+		because 'allows JUnit 3 and JUnit 4 tests to run'
+	}
+}
+
+test {
+
+	testLogging {
+		events 'started', 'passed'
+		showStandardStreams = true
+	}
+
+	useJUnitPlatform()
+}
